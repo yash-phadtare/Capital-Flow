@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Capital Flow — track your expenses, stay on budget and understand your spending.">
+    <title>Dashboard - Capital Flow</title>
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f46e5'/%3E%3Ctext x='16' y='22' font-size='17' font-weight='bold' text-anchor='middle' fill='white' font-family='Arial'%3E%E2%82%B9%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles/modern.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo"><i class="fas fa-wallet"></i> Capital Flow</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav" aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.html" class="active">Dashboard</a></li>
+                    <li><a href="add-expense.html">Add Expense</a></li>
+                    <li><a href="view-expense.html">View Expenses</a></li>
+                    <li class="nav-user" hidden><i class="fas fa-user"></i> <span class="nav-user-name"></span></li>
+                    <li><a href="login.html" data-action="logout"><i class="fas fa-right-from-bracket"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="dashboard-greeting">
+                <h1>Hi, <span id="user-name">friend</span></h1>
+                <p>Here is your financial overview.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon primary"><i class="fas fa-wallet"></i></div>
+                    <div>
+                        <div class="stat-label">Total Spend</div>
+                        <div class="stat-value" id="stat-total">₹0.00</div>
+                        <div class="stat-sub"></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon success"><i class="fas fa-calendar-check"></i></div>
+                    <div>
+                        <div class="stat-label">This Month</div>
+                        <div class="stat-value" id="stat-month">₹0.00</div>
+                        <div class="stat-sub"></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon info"><i class="fas fa-receipt"></i></div>
+                    <div>
+                        <div class="stat-label">Expenses</div>
+                        <div class="stat-value" id="stat-count">0</div>
+                        <div class="stat-sub"></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon warning"><i class="fas fa-bullseye"></i></div>
+                    <div>
+                        <div class="stat-label">Budget</div>
+                        <div class="stat-value" id="stat-budget">—</div>
+                        <div class="stat-sub"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-chart-pie"></i> Spending by Category</h2>
+                    <p class="card-subtitle">Everything you have spent so far, by category.</p>
+                    <div class="donut-wrap">
+                        <div class="donut-chart" id="category-donut">
+                            <div class="donut-center">
+                                <strong id="donut-total">₹0</strong>
+                                <span>total</span>
+                            </div>
+                        </div>
+                        <div class="category-list" id="category-list"></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-chart-column"></i> Monthly Spending</h2>
+                    <p class="card-subtitle">Your last six months at a glance.</p>
+                    <div id="monthly-chart" class="bar-chart"></div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="flex justify-between items-center gap-2 mb-2">
+                        <div>
+                            <h2 class="card-title"><i class="fas fa-clock-rotate-left"></i> Recent Expenses</h2>
+                            <p class="card-subtitle" style="margin-bottom:0">Your latest five entries.</p>
+                        </div>
+                        <a href="view-expense.html" class="btn btn-outline btn-sm">View all</a>
+                    </div>
+                    <div id="recent-expenses"></div>
+                </div>
+
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-bullseye"></i> Monthly Budget</h2>
+                    <p class="card-subtitle">Keep this month's spending within your target.</p>
+                    <div class="budget-row">
+                        <div class="form-group">
+                            <label for="budget-input">Budget amount (₹)</label>
+                            <input type="number" id="budget-input" class="form-control" min="0" step="0.01"
+                                inputmode="decimal" placeholder="e.g., 20000">
+                        </div>
+                        <button id="save-budget" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
+                    </div>
+                    <div class="budget-progress">
+                        <div id="budget-bar" class="budget-progress-fill"></div>
+                    </div>
+                    <p id="budget-status" class="budget-status"></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; <span class="current-year">2024</span> Capital Flow. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/common.js"></script>
+    <script src="scripts/dashboard.js"></script>
+</body>
+
+</html>

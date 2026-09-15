@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create a free Capital Flow account to start tracking expenses.">
+    <title>Sign Up - Capital Flow</title>
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f46e5'/%3E%3Ctext x='16' y='22' font-size='17' font-weight='bold' text-anchor='middle' fill='white' font-family='Arial'%3E%E2%82%B9%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles/modern.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo"><i class="fas fa-wallet"></i> Capital Flow</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav" aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="signup.html" class="active">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="card mx-auto mt-3" style="max-width: 480px;">
+                <h1 class="page-title text-center">Create Account</h1>
+                <form class="signup-form" novalidate>
+                    <div class="form-group">
+                        <label for="name"><i class="fas fa-signature"></i> Full Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Enter your full name"
+                            autocomplete="name" required>
+                        <small class="input-error" id="name-error"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="Enter your email"
+                            autocomplete="email" required>
+                        <small class="input-error" id="email-error"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="username"><i class="fas fa-user"></i> Username</label>
+                        <input type="text" id="username" class="form-control" placeholder="Choose a username"
+                            autocomplete="username" required>
+                        <small class="input-error" id="username-error"></small>
+                        <small class="form-hint">3-20 characters: letters, numbers or underscore.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="password"><i class="fas fa-lock"></i> Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" class="form-control" placeholder="Create a password"
+                                autocomplete="new-password" required>
+                            <button type="button" class="toggle-pass" aria-label="Show password"
+                                aria-pressed="false"><i class="fas fa-eye"></i></button>
+                        </div>
+                        <small class="input-error" id="password-error"></small>
+                        <small class="form-hint">Minimum 8 characters, with at least one letter and one number.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword"><i class="fas fa-lock"></i> Confirm Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="confirmPassword" class="form-control"
+                                placeholder="Re-enter your password" autocomplete="new-password" required>
+                            <button type="button" class="toggle-pass" aria-label="Show password"
+                                aria-pressed="false"><i class="fas fa-eye"></i></button>
+                        </div>
+                        <small class="input-error" id="confirmPassword-error"></small>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                    <p class="text-center mt-3 muted">Already have an account? <a href="login.html">Login</a></p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; <span class="current-year">2024</span> Capital Flow. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/common.js"></script>
+    <script src="scripts/signup.js"></script>
+</body>
+
+</html>
